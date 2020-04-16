@@ -1,15 +1,14 @@
 <template>
-<div class="cover">
   <div id="pg-welcome">
-    <b-jumbotron class="jumbotron" header="Dragon Boat Racer" lead="MULTIPLAYER 2D EDITION">
+    <b-jumbotron class="jumbotron" header="DRAGON BOAT FESTIVAL" lead="MULTIPLAYER 2D EDITION">
     </b-jumbotron>
+    <h1>Enter Name to Play Game</h1>
     <form id="signin-form">
-      Player Name<br>
+      Name<br>
       <input type="text" v-model="playerName" required>
     </form><br>
-    <b-button form="signin-form" variant="info" @click.prevent="enterGame()">LET'S PLAY</b-button>
+    <b-button form="signin-form" variant="success" @click.prevent="enterGame()">LET'S PLAY</b-button>
   </div>
-</div>
 </template>
 
 <script>
@@ -80,3 +79,4 @@ export default {
   }
 
 </style>
+
