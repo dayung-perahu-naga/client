@@ -1,15 +1,15 @@
 <template>
   <div>
-    <audio id="audio" hidden>
-      <source src=".././assets/speeding-truck-1-sound-effect-69406128.mp3" type="audio/wav">
+    <audio id="audio" controls loop hidden>
+      <source src="../assets/genderang.wav" type="audio/wav">
     </audio>
     <div class="container" style="margin:0;padding:0">
       <div class="row">
         <div>
           <div class="bg">
           <button class="btn btn-danger console"  @click="move()">MOVE</button>
-            <img class="board1" src=".././assets/nagamerah.png" :style="`left:${leftPrau1}%`" />
-            <img class="board2" src=".././assets/nagaijo.png" :style="`left:${leftPrau2}%`" />
+            <img class="board1" src="../assets/nagamerah.png" :style="`left:${leftBoard1}%`" />
+            <img class="board2" src="../assets/nagaijo.png" :style="`left:${leftBoard2}%`" />
           </div>
         </div>
         <div>
@@ -37,66 +37,66 @@
 </template>
 
 <script>
-import io from "socket.io-client";
-import { mapState } from "vuex";
-import swal from "sweetalert";
+import io from 'socket.io-client'
+import { mapState } from 'vuex'
+import swal from 'sweetalert'
 export default {
-  name: "Game",
-  data() {
+  name: 'Game',
+  data () {
     return {
-      id: "",
+      id: '',
       winner: false,
-      winnerName: "",
-      leftBoard1: 80,
-      leftBoard2: 80,
-      otherPlayer: ""
-    };
+      winnerName: '',
+      leftBoard1: 100,
+      leftBoard2: 100,
+      otherPlayer: ''
+    }
   },
-  created() {
+  created () {
     // this.socket = io('https://jsracerdynamicfox.herokuapp.com')
-    this.socket = io("https://localhost:4100");
-    const audio = document.getElementById("audio");
-    audio.loop = true;
-    audio.play();
+    this.socket = io('http://localhost:4100')
   },
-  mounted() {
-    this.socket.on("positions", data => {
-      this.leftPrau1 = data[0].left;
-      this.leftPrau2 = data[1].left;
-    });
-    this.socket.on("winner", data => {
+  mounted () {
+    const audio = document.getElementById('audio')
+    // audio.loop = true;
+    audio.play()
+    this.socket.on('positions', data => {
+      this.leftBoard1 = data[0].left
+      this.leftBoard2 = data[1].left
+    })
+    this.socket.on('winner', data => {
       if (data) {
-        this.winner = true;
-        this.winnerName = data;
+        this.winner = true
+        this.winnerName = data
         if (this.winnerName === this.playerName) {
-          swal("CONGRATULATION", "" + this.winnerName + " You Win the Game !");
+          swal('CONGRATULATION', '' + this.winnerName + ' You Win the Game !')
         } else {
           swal(
-            "SORRY",
-            " You Lost the Game ! the Winner is " + this.winnerName
-          );
+            'SORRY',
+            ' You Lost the Game ! the Winner is ' + this.winnerName
+          )
         }
-        localStorage.clear();
-        this.$router.push("/");
+        localStorage.clear()
+        this.$router.push('/')
       }
-    });
+    })
   },
   methods: {
-    move() {
+    move () {
       if (!this.winner) {
         const payload = {
           id: this.socket.id,
           name: this.playerName
-        };
-        this.socket.emit("move", payload);
-        this.dice = 0;
+        }
+        this.socket.emit('move', payload)
+        this.dice = 0
       }
     }
   },
   computed: {
-    ...mapState(["playerName"])
+    ...mapState(['playerName'])
   }
-};
+}
 </script>
 
 <style scoped>
@@ -129,7 +129,7 @@ export default {
   height: 72px;
 }
 .board1 {
-  left: 80%;
+  left: 10%;
   bottom: 10px;
   height: 150px;
   width: 100px;
@@ -137,7 +137,7 @@ export default {
   position: absolute;
 }
 .board2 {
-  left: 80%;
+  left: 10%;
   bottom: 120px;
   height: 150px;
   width: 100px;
