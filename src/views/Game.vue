@@ -53,8 +53,8 @@ export default {
     }
   },
   created () {
-    // this.socket = io('https://jsracerdynamicfox.herokuapp.com')
     this.socket = io('http://localhost:4100')
+    // this.socket = io('https://perahudayung.herokuapp.com')
   },
   mounted () {
     const audio = document.getElementById('audio')
@@ -131,16 +131,14 @@ export default {
 .board1 {
   left: 10%;
   bottom: 10px;
-  height: 150px;
-  width: 100px;
+  width: 210px;
   z-index: 0;
   position: absolute;
 }
 .board2 {
   left: 10%;
   bottom: 120px;
-  height: 150px;
-  width: 100px;
+  width: 210px;
   z-index: 0;
   position: absolute;
 }

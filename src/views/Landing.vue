@@ -28,6 +28,7 @@ export default {
         isPlaying: true
       }
       this.$store.dispatch('playGame', payload)
+      
     }
   }
 }
