@@ -158,7 +158,7 @@ export default {
   height: 75px;
 }
 .bg {
-  background: url("../src/il_mare.png");
+  background: url(".././assets/il_mare.jpg");
   background-position: 50%;
   height: 80vh;
   width: 100vw;
