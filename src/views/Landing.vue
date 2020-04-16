@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'Landing',
+  name: 'LandingPage',
   data () {
     return {
       playerName: ''
@@ -33,16 +33,49 @@ export default {
 </script>
 
 <style>
-  #pg-welcome {
-    text-align: center;
-    justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
-  }
   .jumbotron {
-    background: url("../assets/lomba_praunaga.jpg") no-repeat center center;
+    background-image: url(.././assets/logo.svg);
+    background-size: cover;
+    background-position: center;
+    width: 70%;
+    height: auto;
+    margin-top: 20px;
+    color: #000000;
+  }
+  .cover {
+    margin: 0;
+    padding: 0;
+    background: url("../assets/dragon_boat.svg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
     width: 100%;
-    height: 100%;
-    color: seagreen;
     font-weight: bolder;
   }
+  #pg-welcome {
+    height: 100%;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #pg-welcome input {
+    backdrop-filter: blur(5px);
+    background: #222;
+    background: linear-gradient(#918c8c, #222);
+    border: 1px solid #444;
+    border-radius: 5px;
+    box-shadow: 0 2px 0 #000;
+    color: #ffffff;
+    display: block;
+    font-family: "Cabin", helvetica, arial, sans-serif;
+    color: #ffffff;
+    animation: box-glow 1s ease-out infinite alternate;
+    box-shadow: 0 0 5px rgba(4, 255, 255, 0.2), inset 0 0 5px rgba(0, 255, 253, 0.1), 0 2px 0 #000;
+  }
+
 </style>
+
