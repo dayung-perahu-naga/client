@@ -21,7 +21,7 @@
             <ul class="w3-ul w3-card-4">
               <li class="w3-bar w3-bar-1">
                 <img
-                  src="https://www.w3schools.com/w3css/img_avatar2.png"
+                  src=".././assets/user1.png"
                   class="w3-bar-item w3-circle w3-hide-small"
                   style="width:85px"
                 />
@@ -31,7 +31,7 @@
               </li>
               <li class="w3-bar w3-bar-2">
                 <img
-                  src="https://www.w3schools.com/w3css/img_avatar5.png"
+                  src=".././assets/user2.png"
                   class="w3-bar-item w3-circle w3-hide-small"
                   style="width:85px"
                 />
