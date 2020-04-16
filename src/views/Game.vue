@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import io from "socket.io-client";
-import { mapState } from "vuex";
-import swal from "sweetalert";
+import io from "socket.io-client"
+import { mapState } from "vuex"
+import swal from "sweetalert"
 export default {
   name: "Game",
   data() {
