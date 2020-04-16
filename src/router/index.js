@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import LandingPage from '../views/LandingPage.vue'
+import LandingPage from '../views/Landing.vue'
 import Game from '../views/Game.vue'
 
 Vue.use(VueRouter)
