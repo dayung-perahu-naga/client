@@ -60,7 +60,8 @@ export default {
       winnerName: "",
       rightPrau1: 80,
       rightPrau2: 80,
-      otherPlayer: ""
+      otherPlayer: "",
+      socket: {}
     };
   },
   created() {
