@@ -1,15 +1,15 @@
 <template>
   <div>
-    <audio id="audio" hidden>
+    <!-- <audio id="audio" hidden>
       <source src=".././assets/speeding-truck-1-sound-effect-69406128.mp3" type="audio/wav">
-    </audio>
+    </audio> -->
     <div class="container" style="margin:0;padding:0">
       <div class="row">
         <div>
           <div class="bg">
-          <button class="btn btn-danger console"  @click="move()">MOVE</button>
-            <img class="board1" src=".././assets/nagamerah.png" :style="`left:${leftPrau1}%`" />
-            <img class="board2" src=".././assets/nagaijo.png" :style="`left:${leftPrau2}%`" />
+          <button class="btn btn-danger console"  @click.prevent="move()">MOVE</button>
+            <img class="board1" src=".././assets/nagamerah.png" :style="{ left: leftBoard1+ '%'}" />
+            <img class="board2" src=".././assets/nagaijo.png" :style="{ left: leftBoard2+ '%'}" />
           </div>
         </div>
         <div>
@@ -54,15 +54,15 @@ export default {
   },
   created() {
     // this.socket = io('https://jsracerdynamicfox.herokuapp.com')
-    this.socket = io("https://localhost:4100");
+    this.socket = io("http://localhost:4100");
     const audio = document.getElementById("audio");
     audio.loop = true;
     audio.play();
   },
   mounted() {
     this.socket.on("positions", data => {
-      this.leftPrau1 = data[0].left;
-      this.leftPrau2 = data[1].left;
+      this.leftBoard1 = data[0].left;
+      this.leftBoard2 = data[1].left;
     });
     this.socket.on("winner", data => {
       if (data) {
@@ -89,6 +89,7 @@ export default {
           name: this.playerName
         };
         this.socket.emit("move", payload);
+        this.leftBoard1 += 1
         this.dice = 0;
       }
     }
@@ -129,7 +130,6 @@ export default {
   height: 72px;
 }
 .board1 {
-  left: 80%;
   bottom: 10px;
   height: 150px;
   width: 100px;
@@ -137,7 +137,6 @@ export default {
   position: absolute;
 }
 .board2 {
-  left: 80%;
   bottom: 120px;
   height: 150px;
   width: 100px;
