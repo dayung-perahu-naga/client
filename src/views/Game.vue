@@ -130,7 +130,7 @@ export default {
 }
 .board1 {
   left: 10%;
-  bottom: 10px;
+  bottom: 20px;
   height: 150px;
   width: 100px;
   z-index: 0;
@@ -138,7 +138,7 @@ export default {
 }
 .board2 {
   left: 10%;
-  bottom: 120px;
+  bottom: 180px;
   height: 150px;
   width: 100px;
   z-index: 0;
