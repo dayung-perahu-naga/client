@@ -53,8 +53,8 @@ export default {
     }
   },
   created () {
-    // this.socket = io('https://jsracerdynamicfox.herokuapp.com')
-    this.socket = io('http://localhost:4100')
+    this.socket = io('https://perahudayung.herokuapp.com')
+    // this.socket = io('http://localhost:4100')
   },
   mounted () {
     const audio = document.getElementById('audio')
