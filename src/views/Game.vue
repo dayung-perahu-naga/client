@@ -7,7 +7,7 @@
       <div class="row">
         <div>
           <div class="bg">
-          <button class="btn btn-danger console"  @click="move()">MOVE</button>
+          <img @click="move()" class="stick" src="../assets/gamepad.png" alt="playgame">
             <img class="board1" src="../assets/nagamerah.png" :style="`left:${leftBoard1}%`" />
             <img class="board2" src="../assets/nagaijo.png" :style="`left:${leftBoard2}%`" />
           </div>
@@ -17,13 +17,13 @@
             <h2>Players</h2>
             <ul class="w3-ul w3-card-4">
               <li class="w3-bar w3-bar-1">
-                <img src="https://www.w3schools.com/w3css/img_avatar2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+                <img src="../assets/user1.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
                 <div class="w3-bar-item mt-2">
                   <span>{{playerName}}</span>
                 </div>
               </li>
               <li class="w3-bar w3-bar-2">
-                <img src="https://www.w3schools.com/w3css/img_avatar5.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+                <img src="../assets/user2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
                 <div class="w3-bar-item mt-2">
                   <span>Other Player</span>
                 </div>
@@ -53,8 +53,8 @@ export default {
     }
   },
   created () {
-    this.socket = io('http://localhost:4100')
-    // this.socket = io('https://perahudayung.herokuapp.com')
+    this.socket = io('https://perahudayung.herokuapp.com')
+    // this.socket = io('http://localhost:4100')
   },
   mounted () {
     const audio = document.getElementById('audio')
@@ -121,24 +121,26 @@ export default {
   animation: myfirst2 1s 1;
   animation-direction: normal;
 }
-.console {
-  border-radius: 100%;
+.stick {
   position: absolute;
   top: 250px;
   right: 180px;
-  height: 72px;
+  width: 80px;
+  cursor: pointer;
 }
 .board1 {
   left: 10%;
-  bottom: 10px;
-  width: 210px;
+  bottom: 20px;
+  height: 150px;
+  width: 100px;
   z-index: 0;
   position: absolute;
 }
 .board2 {
   left: 10%;
-  bottom: 120px;
-  width: 210px;
+  bottom: 180px;
+  height: 150px;
+  width: 100px;
   z-index: 0;
   position: absolute;
 }
@@ -152,6 +154,7 @@ export default {
 }
 .w3-card-4, .w3-hover-shadow:hover{
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
   width: 25vw;
 }
 .w3-ul {
