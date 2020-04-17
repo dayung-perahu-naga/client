@@ -127,7 +127,10 @@ export default {
             localStorage.clear()
             this.$router.push('/')
           }
-          this.socket.emit('disconnect', this.playerName)
+          this.socket.emit('disconnect', [this.socket.id, this.playerName])
+          this.socket.on('disconnected', (payload) => {
+            swal(`Player ${payload[1]} left. GAME OVER.`)
+          })
         }).catch(err => {
           console.log(err)
         })
