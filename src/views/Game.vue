@@ -5,6 +5,7 @@
     </audio>
     <div class="container" style="margin:0;padding:0">
       <div class="row">
+      <i class="fas fa-power-off fa-2x logout"></i>
         <div>
           <div class="bg">
           <img @click="move()" class="stick" src="../assets/gamepad.png" alt="playgame">
@@ -77,7 +78,7 @@ export default {
           )
         }
         localStorage.clear()
-        // this.$router.push('/')
+        this.$router.push('/')
       }
     })
   },
@@ -100,6 +101,13 @@ export default {
 </script>
 
 <style scoped>
+.logout {
+  color: #ff2600;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 30px;
+}
 .bg {
   background: url('.././assets/high_seas.svg');
   background-position: 100%;
