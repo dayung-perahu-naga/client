@@ -5,7 +5,7 @@
     </audio>
     <div class="container" style="margin:0;padding:0">
       <div class="row">
-      <i class="fas fa-power-off fa-2x logout"></i>
+        <a @click="logout()"><i class="fas fa-power-off fa-2x logout"></i></a>
         <div>
           <div class="bg">
           <img @click="move()" class="stick" src="../assets/gamepad.png" alt="playgame">
@@ -101,6 +101,20 @@ export default {
         this.socket.emit('move', payload)
         this.dice = 0
       }
+    },
+    logout: function () {
+      this.$vToastify.prompt({
+        body: 'Are you sure you want to sign out?',
+        answers: { Yes: true, No: false }
+      })
+        .then(value => {
+          if (value) {
+            localStorage.clear()
+            this.$router.push('/')
+          }
+        }).catch(err => {
+          console.log(err)
+        })
     }
   },
   computed: {
