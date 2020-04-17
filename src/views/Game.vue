@@ -79,11 +79,9 @@ export default {
     this.socket.on('positions', data => {
       console.log('THIS IS RECEIVED POSITIONS')
       console.log(data)
-
       if (data[0]) {
         this.leftBoard1 = data[0].left
       }
-
       if (data[1]) {
         this.leftBoard2 = data[1].left
       }
