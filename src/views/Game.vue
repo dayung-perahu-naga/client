@@ -25,7 +25,8 @@
               <li class="w3-bar w3-bar-2">
                 <img src="../assets/user2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
                 <div class="w3-bar-item mt-2">
-                  <span>Other Player</span>
+                  <span v-if="otherPlayer===''">Waiting player. .</span>
+                  <span>{{otherPlayer}}</span>
                 </div>
               </li>
             </ul>
@@ -53,11 +54,22 @@ export default {
     }
   },
   created () {
-    this.socket = io('https://perahudayung.herokuapp.com')
-    // this.socket = io('http://localhost:4100')
+    // this.socket = io('https://perahudayung.herokuapp.com')
+    this.socket = io('http://localhost:4100')
   },
   mounted () {
     const audio = document.getElementById('audio')
+
+    this.socket.emit('players', this.playerName)
+
+    this.socket.on('playerName', players => {
+        if (this.playerName === players[1]){
+        this.otherPlayer = players[0]
+        } else {
+           this.otherPlayer = players[1]
+        }
+        
+    })
     // audio.loop = true;
     audio.play()
     this.socket.on('positions', data => {
