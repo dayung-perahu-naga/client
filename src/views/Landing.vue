@@ -4,7 +4,6 @@
     <carousel
     class="slide"
     :per-page="1"
-    :navigate-to="someLocalProperty"
     :mouse-drag="true"
     :centerMode="false"
     >
@@ -46,7 +45,6 @@ export default {
         isPlaying: true
       }
       this.$store.dispatch('playGame', payload)
-      
     }
   }
 }
@@ -54,6 +52,7 @@ export default {
 
 <style>
   .slide {
+    border-radius: 14px;
     margin-top: 20px;
     width: 461px;
   }
