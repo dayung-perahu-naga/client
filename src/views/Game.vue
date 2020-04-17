@@ -26,8 +26,8 @@
               <li class="w3-bar w3-bar-2">
                 <img src="../assets/user2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
                 <div class="w3-bar-item mt-2">
-                  <span v-if="otherPlayer===''">Waiting player. .</span>
-                  <span>{{otherPlayer}}</span>
+                  <span v-if="!otherPlayer">Waiting player. .</span>
+                  <span v-else>{{otherPlayer}}</span>
                 </div>
               </li>
             </ul>
@@ -55,8 +55,8 @@ export default {
     }
   },
   created () {
-    // this.socket = io('https://perahudayung.herokuapp.com')
-    this.socket = io('http://localhost:4100')
+    this.socket = io('https://perahudayung.herokuapp.com')
+    // this.socket = io('http://localhost:4100')
     this.socket.on('player-number', (msg) => {
       swal('WELCOME', msg)
     })
@@ -68,17 +68,20 @@ export default {
     const audio = document.getElementById('audio')
     this.socket.emit('players', this.playerName)
     this.socket.on('playerName', players => {
-      if (this.playerName === players[1]) {
-        this.otherPlayer = players[0]
-      } else {
-        this.otherPlayer = players[1]
-      }
+      if ( players.length >= 2 ) {
+        if (this.playerName === players[1]){
+           this.otherPlayer = players[0]
+        } else {
+           this.otherPlayer = players[1]
+        }
+      }  
     })
     // audio.loop = true;
     audio.play()
     this.socket.on('positions', data => {
-      console.log('THIS IS RECEIVED POSITIONS')
-      console.log(data)
+      // console.log('THIS IS RECEIVED POSITIONS')
+      // console.log(data)
+
       if (data[0]) {
         this.leftBoard1 = data[0].left
       }
@@ -124,6 +127,7 @@ export default {
             localStorage.clear()
             this.$router.push('/')
           }
+          this.socket.emit('disconnect', this.playerName)
         }).catch(err => {
           console.log(err)
         })
