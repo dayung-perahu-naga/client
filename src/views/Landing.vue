@@ -1,8 +1,26 @@
 <template>
 <div class="cover">
   <div id="pg-welcome">
-    <b-jumbotron class="jumbotron" header="Dragon Boat Racer" lead="MULTIPLAYER 2D EDITION">
-    </b-jumbotron>
+    <carousel
+    class="slide"
+    :per-page="1"
+    :navigate-to="someLocalProperty"
+    :mouse-drag="true"
+    :centerMode="false"
+    >
+      <slide>
+        <h1>Dragon Boat Racer</h1>
+        <img src="../assets/carousel/slide1.png" >
+      </slide>
+      <slide>
+        <h1>Multiplayer 2D</h1>
+        <img src="../assets/carousel/slide2.png" >
+      </slide>
+      <slide>
+        <h1>By: Wal,Max,Inggar</h1>
+        <img src="../assets/carousel/slide3.png" >
+      </slide>
+    </carousel>
     <form id="signin-form">
       Player Name<br>
       <input type="text" v-model="playerName" required>
@@ -34,14 +52,13 @@ export default {
 </script>
 
 <style>
-  .jumbotron {
-    background-image: url(.././assets/logo.svg);
-    background-size: cover;
-    background-position: center;
-    width: 70%;
-    height: auto;
+  .slide {
     margin-top: 20px;
-    color: #000000;
+    width: 461px;
+  }
+  .slide img {
+    border-radius: 14px;
+    box-shadow: #222 2px;
   }
   .cover {
     margin: 0;
@@ -64,6 +81,9 @@ export default {
     font-family: Arial, Helvetica, sans-serif;
   }
   #pg-welcome input {
+    width: 300px;
+    height: 35px;
+    font-size: 25px;
     backdrop-filter: blur(5px);
     background: #222;
     background: linear-gradient(#918c8c, #222);
