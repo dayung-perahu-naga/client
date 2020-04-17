@@ -57,6 +57,12 @@ export default {
   created () {
     // this.socket = io('https://perahudayung.herokuapp.com')
     this.socket = io('http://localhost:4100')
+    this.socket.on('player-number', (msg) => {
+      swal('WELCOME', msg)
+    })
+    this.socket.on('player-connect', (msg) => {
+      swal('ANNOUNCEMENT', msg)
+    })
   },
   mounted () {
     const audio = document.getElementById('audio')
@@ -71,8 +77,16 @@ export default {
     // audio.loop = true;
     audio.play()
     this.socket.on('positions', data => {
-      this.leftBoard1 = data[0].left
-      this.leftBoard2 = data[1].left
+      console.log('THIS IS RECEIVED POSITIONS')
+      console.log(data)
+
+      if (data[0]) {
+        this.leftBoard1 = data[0].left
+      }
+
+      if (data[1]) {
+        this.leftBoard2 = data[1].left
+      }
     })
     this.socket.on('winner', data => {
       if (data) {
