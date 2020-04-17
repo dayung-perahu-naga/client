@@ -60,16 +60,13 @@ export default {
   },
   mounted () {
     const audio = document.getElementById('audio')
-
     this.socket.emit('players', this.playerName)
-
     this.socket.on('playerName', players => {
-        if (this.playerName === players[1]){
+      if (this.playerName === players[1]) {
         this.otherPlayer = players[0]
-        } else {
-           this.otherPlayer = players[1]
-        }
-        
+      } else {
+        this.otherPlayer = players[1]
+      }
     })
     // audio.loop = true;
     audio.play()
